@@ -2,27 +2,34 @@ import React, { Component } from "react";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 
+import Scream from "../components/Scream";
+
 class Home extends Component {
+  state = {
+    screams: null,
+  };
+
   componentDidMount() {
-    axios.get("/screams").then((res) => {});
+    axios
+      .get("/screams")
+      .then((res) => {
+        console.log(res.data);
+        this.setState({
+          screams: res.data,
+        });
+      })
+      .catch((err) => console.log(err));
   }
   render() {
+    let recentScreamsMarkup = this.state.screams ? (
+      this.state.screams.map((scream) => <Scream scream={scream} />)
+    ) : (
+      <p>Loading...</p>
+    );
     return (
       <Grid container spacing={2}>
         <Grid item sm={8} xs={12}>
-          <p>
-            SCREAMS - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Duis semper magna non pellentesque bibendum. Phasellus sagittis, sem
-            id tempus varius, nunc velit consequat turpis, lobortis placerat leo
-            elit a neque. Fusce a varius nulla. Sed placerat ac orci ut aliquet.
-            Vestibulum pellentesque nibh a orci finibus dapibus. Vivamus
-            lobortis dolor id vehicula lacinia. Praesent commodo semper
-            consectetur. Sed lacinia nisi a sem tristique, efficitur luctus orci
-            feugiat. Cras ut fringilla elit. Sed feugiat tortor a mi pretium
-            mattis. Cras sagittis et velit eget luctus. Donec ac lectus
-            vulputate, iaculis augue vel, sodales purus. Mauris congue at turpis
-            non dictum. Aliquam a maximus urna.
-          </p>
+          {recentScreamsMarkup}
         </Grid>
         <Grid item sm={4} xs={12}>
           <p>
