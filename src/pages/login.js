@@ -39,7 +39,7 @@ class Login extends Component {
   }
 
   handleSubmit = (event) => {
-    console.log("worked");
+    event.preventDefault();
   };
 
   handleChange = (event) => {
