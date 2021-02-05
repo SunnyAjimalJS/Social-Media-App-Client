@@ -11,6 +11,10 @@ const styles = {
   formGrid: {
     textAlign: "center",
   },
+  image: {
+    margin: "20px auto 20px auto",
+  },
+  pageTitle: {},
 };
 
 class Login extends Component {
@@ -20,10 +24,11 @@ class Login extends Component {
       <Grid container className={classes.formGrid}>
         <Grid item sm />
         <Grid item sm>
-          <img src={AppIcon} alt="App Icon" />
+          <img src={AppIcon} alt="App Icon" className={classes.image} />
           <Typography variant="h2" className={classes.pageTitle}>
             Login
           </Typography>
+          <form noValidate onSubmit={this.handleSubmit} />
         </Grid>
         <Grid item sm />
       </Grid>
