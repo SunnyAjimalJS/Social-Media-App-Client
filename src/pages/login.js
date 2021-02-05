@@ -1,7 +1,11 @@
 import React, { Component } from "react";
+import withStyles from "@material-ui/core/styles/withStyles";
+
+const styles = {};
 
 class Login extends Component {
   render() {
+    const { classes } = this.props;
     return (
       <div>
         <h1>Login page</h1>
@@ -10,4 +14,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withStyles(styles)(Login);
