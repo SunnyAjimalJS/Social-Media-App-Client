@@ -48,9 +48,21 @@ class Login extends Component {
       email: this.state.email,
       password: this.state.password,
     };
-    axios.post("/login", userData).then((res) => {
-      console.log(res.data);
-    });
+    axios
+      .post("/login", userData)
+      .then((res) => {
+        console.log(res.data);
+        this.setState({
+          loading: false,
+        });
+        this.props.history.push("/");
+      })
+      .catch((err) => {
+        this.setState({
+          errors: err.result.data,
+          loading: false,
+        });
+      });
   };
 
   handleChange = (event) => {
