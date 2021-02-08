@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
 import AppIcon from "../images/icon.png";
+import axios from "axios";
 
 // Material UI imports
 import Grid from "@material-ui/core/Grid";
@@ -40,6 +41,16 @@ class Login extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    this.setState({
+      loading: true,
+    });
+    const userData = {
+      email: this.state.email,
+      password: this.state.password,
+    };
+    axios.post("/login", userData).then((res) => {
+      console.log(res.data);
+    });
   };
 
   handleChange = (event) => {
