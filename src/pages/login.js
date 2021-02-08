@@ -73,6 +73,7 @@ class Login extends Component {
 
   render() {
     const { classes } = this.props;
+    const { errors, loading } = this.state;
     return (
       <Grid container className={classes.formGrid}>
         <Grid item sm />
@@ -92,6 +93,8 @@ class Login extends Component {
               type="email"
               label="Email"
               className={classes.textField}
+              helperText={errors.email}
+              error={errors.email ? true : false}
               value={this.state.email}
               onChange={this.handleChange}
               fullWidth
@@ -102,6 +105,8 @@ class Login extends Component {
               type="password"
               label="Password"
               className={classes.textField}
+              helperText={errors.password}
+              error={errors.password ? true : false}
               value={this.state.password}
               onChange={this.handleChange}
               fullWidth
