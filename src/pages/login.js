@@ -58,8 +58,9 @@ class Login extends Component {
         this.props.history.push("/");
       })
       .catch((err) => {
+        console.error(err.response.data.errors);
         this.setState({
-          errors: err.result.data,
+          errors: err.response.data.errors,
           loading: false,
         });
       });
