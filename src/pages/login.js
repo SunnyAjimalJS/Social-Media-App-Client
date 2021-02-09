@@ -26,6 +26,10 @@ const styles = {
   button: {
     marginTop: 20,
   },
+  customError: {
+    color: "red",
+    fontSize: "0.8rem",
+  },
 };
 
 class Login extends Component {
@@ -58,9 +62,8 @@ class Login extends Component {
         this.props.history.push("/");
       })
       .catch((err) => {
-        console.error(err.response.data.errors);
         this.setState({
-          errors: err.response.data.errors,
+          errors: err.response.data,
           loading: false,
         });
       });
@@ -94,7 +97,7 @@ class Login extends Component {
               type="email"
               label="Email"
               className={classes.textField}
-              helperText={errors.email}
+              helperText={errors.password}
               error={errors.email ? true : false}
               value={this.state.email}
               onChange={this.handleChange}
@@ -112,6 +115,11 @@ class Login extends Component {
               onChange={this.handleChange}
               fullWidth
             />
+            {errors.general && (
+              <Typography variant="body2" className={classes.customError}>
+                {errors.general}
+              </Typography>
+            )}
             <Button
               type="submit"
               variant="contained"
