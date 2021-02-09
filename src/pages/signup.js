@@ -11,11 +11,33 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import FormHelperText from "@material-ui/core/FormHelperText";
 
-const styles = (theme) => ({
-  ...theme,
-});
+const styles = {
+  formGrid: {
+    textAlign: "center",
+  },
+  image: {
+    margin: "20px auto 10px auto",
+  },
+  pageTitle: {
+    margin: "10px auto 10px auto",
+  },
+  textField: {
+    margin: "10px auto 10px auto",
+  },
+  button: {
+    marginTop: 20,
+    position: "relative",
+  },
+  customError: {
+    color: "#ff0000",
+    fontSize: "0.8rem",
+    marginTop: 10,
+  },
+  progress: {
+    position: "absolute",
+  },
+};
 
 class Signup extends Component {
   constructor() {
@@ -78,7 +100,7 @@ class Signup extends Component {
             className={classes.pageTitle}
             color="secondary"
           >
-            Login
+            Signup
           </Typography>
           <form noValidate onSubmit={this.handleSubmit}>
             <TextField
@@ -105,6 +127,30 @@ class Signup extends Component {
               onChange={this.handleChange}
               fullWidth
             />
+            <TextField
+              id="confirmPassword"
+              name="confirmPassword"
+              type="password"
+              label="Confirm Password"
+              className={classes.textField}
+              helperText={errors.confirmPassword}
+              error={errors.confirmPassword ? true : false}
+              value={this.state.confirmPassword}
+              onChange={this.handleChange}
+              fullWidth
+            />
+            <TextField
+              id="handle"
+              name="handle"
+              type="text"
+              label="Handle"
+              className={classes.textField}
+              helperText={errors.handle}
+              error={errors.handle ? true : false}
+              value={this.state.handle}
+              onChange={this.handleChange}
+              fullWidth
+            />
             {errors.general && (
               <Typography variant="body2" className={classes.customError}>
                 {errors.general}
@@ -117,14 +163,14 @@ class Signup extends Component {
               className={classes.button}
               disabled={loading}
             >
-              LOGIN
+              SIGNUP
               {loading && (
                 <CircularProgress size={30} className={classes.progress} />
               )}
             </Button>
             <br />
             <small>
-              Don't have an account yet? sign up <Link to="/signup"> here</Link>
+              Already have an account? login <Link to="/login"> here</Link>
             </small>
           </form>
         </Grid>
