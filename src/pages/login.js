@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
 import AppIcon from "../images/icon.png";
@@ -29,6 +30,7 @@ const styles = {
   customError: {
     color: "red",
     fontSize: "0.8rem",
+    marginTop: 10,
   },
 };
 
@@ -97,7 +99,7 @@ class Login extends Component {
               type="email"
               label="Email"
               className={classes.textField}
-              helperText={errors.password}
+              helperText={errors.email}
               error={errors.email ? true : false}
               value={this.state.email}
               onChange={this.handleChange}
@@ -128,6 +130,10 @@ class Login extends Component {
             >
               LOGIN
             </Button>
+            <br />
+            <small>
+              Don't have an account? sign up<Link to="/signup"> here</Link>
+            </small>
           </form>
         </Grid>
         <Grid item sm />
