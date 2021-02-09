@@ -10,6 +10,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const styles = {
   formGrid: {
@@ -26,11 +27,15 @@ const styles = {
   },
   button: {
     marginTop: 20,
+    position: "relative",
   },
   customError: {
     color: "red",
     fontSize: "0.8rem",
     marginTop: 10,
+  },
+  progress: {
+    position: "absolute",
   },
 };
 
@@ -127,12 +132,16 @@ class Login extends Component {
               variant="contained"
               color="primary"
               className={classes.button}
+              disabled={loading}
             >
               LOGIN
+              {loading && (
+                <CircularProgress size={30} className={classes.progress} />
+              )}
             </Button>
             <br />
             <small>
-              Don't have an account? sign up<Link to="/signup"> here</Link>
+              Don't have an account yet? sign up <Link to="/signup"> here</Link>
             </small>
           </form>
         </Grid>
