@@ -3,10 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
-
 // Components
 import Navbar from "./components/Navbar";
-
 // Pages
 import Home from "./pages/home";
 import Login from "./pages/login";
@@ -31,6 +29,10 @@ const theme = createMuiTheme({
     useNextVariants: true,
   },
 });
+
+const token = localStorage.FBIdToken;
+if (token) {
+}
 
 class App extends Component {
   render() {

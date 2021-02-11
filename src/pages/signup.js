@@ -17,20 +17,20 @@ const styles = {
     textAlign: "center",
   },
   image: {
-    margin: "20px auto 10px auto",
+    margin: "10px auto 10px auto",
   },
   pageTitle: {
-    margin: "10px auto 10px auto",
+    margin: "5px auto 5px auto",
   },
   textField: {
-    margin: "10px auto 10px auto",
+    margin: "5px auto 5px auto",
   },
   button: {
     marginTop: 20,
     position: "relative",
   },
   customError: {
-    color: "#ff0000",
+    color: "red",
     fontSize: "0.8rem",
     marginTop: 10,
   },
@@ -38,7 +38,6 @@ const styles = {
     position: "absolute",
   },
 };
-
 class Signup extends Component {
   constructor() {
     super();
@@ -96,7 +95,7 @@ class Signup extends Component {
         <Grid item sm>
           <img src={AppIcon} alt="App Icon" className={classes.image} />
           <Typography
-            variant="h2"
+            variant="h3"
             className={classes.pageTitle}
             color="secondary"
           >
