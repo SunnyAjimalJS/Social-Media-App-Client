@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
+import jwtDecode from "jwt-decode";
 // Components
 import Navbar from "./components/Navbar";
 // Pages
@@ -32,6 +33,10 @@ const theme = createMuiTheme({
 
 const token = localStorage.FBIdToken;
 if (token) {
+  const decodedToken = jwtDecode(token);
+  if (decodedToken.exp * 1000 < Date.now()) {
+    window.location.href = "/login";
+  }
 }
 
 class App extends Component {
