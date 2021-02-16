@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
 import AppIcon from "../images/icon.png";
-import axios from "axios";
 
 // Material UI imports
 import Grid from "@material-ui/core/Grid";
@@ -51,6 +50,12 @@ class Login extends Component {
       password: "",
       errors: {},
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.UI.errors) {
+      this.setState({ errors: nextProps.UI.errors });
+    }
   }
 
   handleSubmit = (event) => {
