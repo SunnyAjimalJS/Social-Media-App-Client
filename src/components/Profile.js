@@ -15,7 +15,7 @@ import LocationOn from "@material-ui/icons/LocationOn";
 import LinkIcon from "@material-ui/icons/Link";
 import CalendarToday from "@material-ui/icons/CalendarToday";
 
-const styles = {
+const styles = (theme) => ({
   paper: {
     padding: 20,
   },
@@ -61,7 +61,7 @@ const styles = {
       margin: "20px 10px",
     },
   },
-};
+});
 
 class Profile extends Component {
   render() {
@@ -69,16 +69,17 @@ class Profile extends Component {
       classes,
       user: {
         credentials: { handle, createdAt, imageUrl, bio, website, location },
+        loading,
+        authenticated,
       },
-      loading,
     } = this.props;
 
     let profileMarkup = !loading ? (
       authenticated ? (
         <Paper className={classes.paper}>
           <div className={classes.profile}>
-            <div className="profile-image">
-              <img src={imageUrl} alt="profile" />
+            <div className="image-wrapper">
+              <img src={imageUrl} alt="profile" className="profile-image" />
             </div>
             <hr />
             <div className="profile-details">
@@ -115,7 +116,29 @@ class Profile extends Component {
           </div>
         </Paper>
       ) : (
-        <p>No profile - signup or login</p>
+        <Paper className={classes.paper}>
+          <Typography variant="body2" align="center">
+            No profile found, please login again
+          </Typography>
+          <div className={classes.buttons}>
+            <Button
+              variant="contained"
+              color="primary"
+              component={Link}
+              to="/login"
+            >
+              Login
+            </Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              component={Link}
+              to="/signup"
+            >
+              Signup
+            </Button>
+          </div>
+        </Paper>
       )
     ) : (
       <p>Loading...</p>
