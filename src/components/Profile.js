@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { Link } from "react-router-dom";
+import dayjs from "dayjs";
 // Redux imports
 import { connect } from "react-redux";
 // Material UI Imports
@@ -93,8 +94,23 @@ class Profile extends Component {
               {bio && <Typography variant="body2">{bio}</Typography>}
               <hr />
               {location && (
-
+                <Fragment>
+                  <LocationOn color="primary" /> <span>{location}</span>
+                  <hr />
+                </Fragment>
               )}
+              {website && (
+                <Fragment>
+                  <LinkIcon color="primary" />
+                  <a href={website} target="_blank" rel="noopener noreferrer">
+                    {" "}
+                    {website}
+                  </a>
+                  <hr />
+                </Fragment>
+              )}
+              <CalendarToday color="primary" />{" "}
+              <span>Joined {dayjs(createdAt).format("MMM YYYY")} </span>
             </div>
           </div>
         </Paper>
