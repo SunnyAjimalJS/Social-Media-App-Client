@@ -3,6 +3,7 @@ import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 
 import Scream from "../components/Scream";
+import Profile from "../components/Profile";
 
 class Home extends Component {
   state = {
@@ -33,13 +34,7 @@ class Home extends Component {
           {recentScreamsMarkup}
         </Grid>
         <Grid item sm={4} xs={12}>
-          <p>
-            PROFILE - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Duis semper magna non pellentesque bibendum. Phasellus sagittis, sem
-            id tempus varius, nunc velit consequat turpis, lobortis placerat leo
-            elit a neque. Fusce a varius nulla. Sed placerat ac orci ut aliquet.
-            Vestibulum pellentesque nibh a orci finibus dapibus.
-          </p>
+          <Profile />
         </Grid>
       </Grid>
     );
