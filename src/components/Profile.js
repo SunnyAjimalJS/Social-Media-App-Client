@@ -72,6 +72,7 @@ class Profile extends Component {
 
   handleEditPicture = () => {
     const fileInput = document.getElementById("imageInput");
+    fileInput.click();
   };
   render() {
     const {
