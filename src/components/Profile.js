@@ -11,6 +11,7 @@ import Paper from "@material-ui/core/Paper";
 import MuiLink from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
+import Tooltip from "@material-ui/core/Tooltip";
 // Icons imports
 import LocationOn from "@material-ui/icons/LocationOn";
 import LinkIcon from "@material-ui/icons/Link";
@@ -68,6 +69,9 @@ const styles = (theme) => ({
 class Profile extends Component {
   handleImageChange = (event) => {
     const image = event.target.files[0];
+    const formData = new FormData();
+    formData.append("image", image, image.name);
+    this.props.uploadImage(formData);
   };
 
   handleEditPicture = () => {
@@ -96,9 +100,11 @@ class Profile extends Component {
                 hidden="hidden"
                 onChange={this.handleImageChange}
               />
-              <IconButton onClick={this.handleEditPicture} className="button">
-                <EditIcon color="primary" />
-              </IconButton>
+              <Tooltip title="Edit profile picture" placement="top">
+                <IconButton onClick={this.handleEditPicture} className="button">
+                  <EditIcon color="primary" />
+                </IconButton>
+              </Tooltip>
             </div>
             <hr />
             <div className="profile-details">

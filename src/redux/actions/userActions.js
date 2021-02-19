@@ -57,6 +57,10 @@ export const getUserData = () => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
+export const uploadImage = (formData) => (dispatch) => {
+  dispatch({ type: LOADING_USER });
+};
+
 export const setAuthorizationHeader = (token) => {
   const FBIdToken = `Bearer ${token}`;
   localStorage.setItem("FBIdToken", FBIdToken);
