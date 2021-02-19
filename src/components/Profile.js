@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 // Redux imports
 import { connect } from "react-redux";
+import { logoutUser, uploadImage } from "../redux/actions/userActions";
 // Material UI Imports
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
@@ -176,6 +177,8 @@ class Profile extends Component {
 const mapStateToProps = (state) => ({
   user: state.user,
 });
+
+const mapActionsToProps = { logoutUser, uploadImage };
 
 Profile.propTypes = {
   user: PropTypes.object.isRequired,
