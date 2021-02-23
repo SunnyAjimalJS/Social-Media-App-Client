@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-import { MuiThemeProvider } from "@material-ui/core/styles";
+import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
@@ -21,15 +21,15 @@ import Signup from "./pages/signup";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      light: "#ffef62",
-      main: "#4FB477",
-      dark: "#b2a429",
-      contrastText: "#464a12",
+      light: "#3b7573",
+      main: "#0B5351",
+      dark: "#073a38",
+      contrastText: "#fff",
     },
     secondary: {
-      light: "#838848",
-      main: "#0B5351",
-      dark: "#464a12",
+      light: "#72c392",
+      main: "#4FB477",
+      dark: "#377d53",
       contrastText: "#fff",
     },
   },
