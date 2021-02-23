@@ -16,6 +16,15 @@ class EditDetails extends Component {
     website: "",
     open: false,
   };
+
+  componentDidMount() {
+    const { credentials } = this.props;
+    this.setState({
+      bio: credentials.bio ? credentials.bio : "",
+      website: credentials.website ? credentials.website : "",
+      location: credentials.location ? credentials.location : "",
+    });
+  }
   render() {
     return <div></div>;
   }
