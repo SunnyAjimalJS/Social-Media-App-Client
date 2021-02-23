@@ -18,6 +18,7 @@ import LocationOn from "@material-ui/icons/LocationOn";
 import LinkIcon from "@material-ui/icons/Link";
 import CalendarToday from "@material-ui/icons/CalendarToday";
 import EditIcon from "@material-ui/icons/Edit";
+import KeyboardReturn from "@material-ui/icons/KeyboardReturn";
 
 const styles = (theme) => ({
   paper: {
@@ -46,7 +47,7 @@ const styles = (theme) => ({
         verticalAlign: "middle",
       },
       "& a": {
-        color: "#00bcd4",
+        color: "primary",
       },
     },
     "& hr": {
@@ -79,6 +80,11 @@ class Profile extends Component {
     const fileInput = document.getElementById("imageInput");
     fileInput.click();
   };
+
+  handleLogout = () => {
+    this.props.logoutUser();
+  };
+
   render() {
     const {
       classes,
@@ -122,13 +128,13 @@ class Profile extends Component {
               <hr />
               {location && (
                 <Fragment>
-                  <LocationOn color="primary" /> <span>{location}</span>
+                  <LocationOn color="secondary" /> <span>{location}</span>
                   <hr />
                 </Fragment>
               )}
               {website && (
                 <Fragment>
-                  <LinkIcon color="primary" />
+                  <LinkIcon color="secondary" />
                   <a href={website} target="_blank" rel="noopener noreferrer">
                     {" "}
                     {website}
@@ -136,9 +142,14 @@ class Profile extends Component {
                   <hr />
                 </Fragment>
               )}
-              <CalendarToday color="primary" />{" "}
+              <CalendarToday color="secondary" />{" "}
               <span>Joined {dayjs(createdAt).format("MMM YYYY")} </span>
             </div>
+            <Tooltip title="Logout" placement="top">
+              <IconButton onClick={this.handleLogout}>
+                <KeyboardReturn color="primary" />
+              </IconButton>
+            </Tooltip>
           </div>
         </Paper>
       ) : (
@@ -149,7 +160,7 @@ class Profile extends Component {
           <div className={classes.buttons}>
             <Button
               variant="contained"
-              color="primary"
+              color="secondary"
               component={Link}
               to="/login"
             >
@@ -157,7 +168,7 @@ class Profile extends Component {
             </Button>
             <Button
               variant="contained"
-              color="secondary"
+              color="primary"
               component={Link}
               to="/signup"
             >
