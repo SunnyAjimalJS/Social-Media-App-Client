@@ -24,3 +24,7 @@ export const getScreams = () => (dispatch) => {
       });
     });
 };
+
+// Like a scream
+
+// Unlike a scream
