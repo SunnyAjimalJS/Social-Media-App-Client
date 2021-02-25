@@ -74,7 +74,7 @@ class EditDetails extends Component {
         <MyButton
           tip="Edit details"
           onClick={this.handleOpen}
-          btnClassName="button"
+          btnClassName={classes.button}
         >
           <EditIcon color="primary" />
         </MyButton>
