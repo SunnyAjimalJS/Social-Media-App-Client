@@ -69,6 +69,23 @@ class Scream extends Component {
   }
 }
 
+Scream.propTypes = {
+  likeScream: PropTypes.func.isRequired,
+  unlikeScream: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired,
+  scream: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+
+const mapActionsToProps = {
+  likeScream,
+  unlikeScream,
+};
+
 export default connect(
   mapStateToProps,
   mapActionsToProps
