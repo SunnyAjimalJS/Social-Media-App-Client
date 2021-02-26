@@ -3,12 +3,15 @@ import { Link } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-
-// Material UI Card imports
+import PropTypes from "prop-types";
+// Material UI imports
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
+// Redux imports
+import { connect } from "react-redux";
+import { likeScream, unlikeScream } from "../redux/actions/dataActions";
 
 const styles = {
   card: {
@@ -66,4 +69,7 @@ class Scream extends Component {
   }
 }
 
-export default withStyles(styles)(Scream);
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(withStyles(styles)(Scream));
