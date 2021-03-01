@@ -12,10 +12,20 @@ import DeleteOutline from "@material-ui/icons/DeleteOutline";
 import { connect } from "react-redux";
 import { deleteScream } from "../redux/actions/dataActions";
 
+const styles = {};
+
 class DeleteScream extends Component {
   render() {
     return <div></div>;
   }
 }
 
-export default DeleteScream;
+DeleteScream.propTypes = {
+  deleteScream: PropTypes.func.isRequired,
+  classes: PropTypes.object.isRequired,
+  screamId: PropTypes.string.isRequired,
+};
+
+export default connect(null, { deleteScream })(
+  withStyles(styles)(DeleteScream)
+);
