@@ -23,6 +23,7 @@ const styles = {
   card: {
     display: "flex",
     marginBottom: 20,
+    position: "relative",
   },
   image: {
     minWidth: 200,

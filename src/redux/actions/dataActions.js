@@ -53,10 +53,13 @@ export const unlikeScream = (screamId) => (dispatch) => {
 
 // Delete a scream
 export const deleteScream = (screamId) => (dispatch) => {
-  axios.delete(`/scream/${screamId}`).then(() => {
-    dispatch({
-      type: DELETE_SCREAM,
-      payload: screamId,
-    }).catch((err) => console.log(err));
-  });
+  axios
+    .delete(`/scream/${screamId}`)
+    .then(() => {
+      dispatch({
+        type: DELETE_SCREAM,
+        payload: screamId,
+      });
+    })
+    .catch((err) => console.log(err));
 };
