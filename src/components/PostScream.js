@@ -20,6 +20,19 @@ const styles = {
   textField: {
     margin: "10px auto 10px auto",
   },
+  submitButton: {
+    position: "relative",
+    float: "right",
+    marginTop: 10,
+  },
+  progressSpinner: {
+    position: "absolute",
+  },
+  closeButton: {
+    position: "absolute",
+    left: "91%",
+    top: "6%",
+  },
 };
 
 class PostScream extends Component {
@@ -28,12 +41,30 @@ class PostScream extends Component {
     body: "",
     errors: {},
   };
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.UI.errors) {
+      this.setState({
+        errors: nextProps.UI.errors,
+      });
+    }
+    if (!nextProps.UI.errors && !nextProps.UI.loading) {
+      this.setState({ body: "", open: false, errors: {} });
+    }
+  }
   handleOpen = () => {
     this.setState({ open: true });
   };
   handleClose = () => {
-    this.setState({ open: false });
+    this.setState({ open: false, errors: {} });
   };
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.props.postScream({ body: this.state.body });
+  };
+
   render() {
     const { errors } = this.state;
     const {
@@ -75,6 +106,21 @@ class PostScream extends Component {
                 onChange={this.handleChange}
                 fullWidth
               />
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                className={classes.submitButton}
+                disabled={loading}
+              >
+                Submit
+                {loading && (
+                  <CircularProgress
+                    size={30}
+                    className={classes.progressSpinner}
+                  />
+                )}
+              </Button>
             </form>
           </DialogContent>
         </Dialog>
@@ -92,6 +138,6 @@ const mapStateToProps = (state) => ({
   UI: state.UI,
 });
 
-export default connect((mapStateToProps, { postScream }))(
+export default connect(mapStateToProps, { postScream })(
   withStyles(styles)(PostScream)
 );
