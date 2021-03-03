@@ -12,10 +12,76 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 // Redux imports
 import { connect } from "react-redux";
 import { postScream } from "../redux/actions/dataActions";
+// Icon imports
+import AddIcon from "@material-ui/icons/Add";
+import CloseIcon from "@material-ui/icons/Close";
 
-const styles = {};
+const styles = {
+  textField: {
+    margin: "10px auto 10px auto",
+  },
+};
 
-class PostScream extends Component {}
+class PostScream extends Component {
+  state = {
+    open: false,
+    body: "",
+    errors: {},
+  };
+  handleOpen = () => {
+    this.setState({ open: true });
+  };
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+  render() {
+    const { errors } = this.state;
+    const {
+      classes,
+      UI: { loading },
+    } = this.props;
+
+    return (
+      <Fragment>
+        <MyButton onClick={this.handleOpen} tip="Post a Scream!">
+          <AddIcon />
+        </MyButton>
+        <Dialog
+          open={this.state.open}
+          onClose={this.handleClose}
+          fullWidth
+          maxWidth="sm"
+        >
+          <MyButton
+            tip="Close"
+            onClick={this.handleClose}
+            tipClassName={classes.closeButton}
+          >
+            <CloseIcon />
+          </MyButton>
+          <DialogTitle>Post a scream</DialogTitle>
+          <DialogContent>
+            <form onSubmit={this.handleSubmit}>
+              <TextField
+                name="body"
+                type="text"
+                label="SCREAM!!"
+                multiline
+                rows="3"
+                placeholder="Scream at your fellow apes!"
+                error={errors.body ? true : false}
+                helperText={errors.body}
+                className="textField"
+                onChange={this.handleChange}
+                fullWidth
+              />
+            </form>
+          </DialogContent>
+        </Dialog>
+      </Fragment>
+    );
+  }
+}
 
 PostScream.propTypes = {
   postScream: PropTypes.func.isRequired,
