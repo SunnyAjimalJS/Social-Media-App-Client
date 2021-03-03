@@ -17,7 +17,14 @@ const styles = {};
 
 class PostScream extends Component {}
 
-const mapStateToProps = () => {};
+PostScream.propTypes = {
+  postScream: PropTypes.func.isRequired,
+  UI: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  UI: state.UI,
+});
 
 export default connect((mapStateToProps, { postScream }))(
   withStyles(styles)(PostScream)
