@@ -11,7 +11,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import CircularProgress from "@material-ui/core/CircularProgress";
 // Redux imports
 import { connect } from "react-redux";
-import { postScream } from "../redux/actions/dataActions";
+import { postScream, clearErrors } from "../redux/actions/dataActions";
 // Icon imports
 import AddIcon from "@material-ui/icons/Add";
 import CloseIcon from "@material-ui/icons/Close";
@@ -55,6 +55,7 @@ class PostScream extends Component {
     this.setState({ open: true });
   };
   handleClose = () => {
+    this.props.clearErrors();
     this.setState({ open: false, errors: {} });
   };
   handleChange = (event) => {
@@ -131,6 +132,7 @@ class PostScream extends Component {
 
 PostScream.propTypes = {
   postScream: PropTypes.func.isRequired,
+  clearErrors: PropTypes.func.isRequired,
   UI: PropTypes.object.isRequired,
 };
 
@@ -138,6 +140,6 @@ const mapStateToProps = (state) => ({
   UI: state.UI,
 });
 
-export default connect(mapStateToProps, { postScream })(
+export default connect(mapStateToProps, { postScream, clearErrors })(
   withStyles(styles)(PostScream)
 );

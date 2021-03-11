@@ -30,6 +30,9 @@ export const getScreams = () => (dispatch) => {
     });
 };
 
+// Get one scream's info
+export const getScream = (screamId) => (dispatch) => {};
+
 // Post a scream
 export const postScream = (newScream) => (dispatch) => {
   dispatch({ type: LOADING_UI });
