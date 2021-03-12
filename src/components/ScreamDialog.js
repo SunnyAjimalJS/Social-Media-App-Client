@@ -4,16 +4,17 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import MyButton from "../util/MyButton";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
+import LikeButton from "./LikeButton";
 // Material UI imports
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 // Icons
 import CloseIcon from "@material-ui/icons/Close";
 import UnfoldMoreIcon from "@material-ui/icons/UnfoldMore";
+import ChatIcon from "@material-ui/icons/Chat";
 // Redux imports
 import { connect } from "react-redux";
 import { getScream } from "../redux/actions/dataActions";
@@ -97,6 +98,12 @@ class ScreamDialog extends Component {
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body1">{body}</Typography>
+          <LikeButton screamId={screamId} />
+          <span>{likeCount} likes</span>
+          <MyButton tip="comments">
+            <ChatIcon color="primary" />
+          </MyButton>
+          <span>{commentCount}</span>
         </Grid>
       </Grid>
     );
