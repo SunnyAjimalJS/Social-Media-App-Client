@@ -14,25 +14,26 @@ export class LikeButton extends Component {
     if (
       this.props.user.likes &&
       this.props.user.likes.find(
-        (like) => like.screamId === this.props.scream.screamId
+        (like) => like.screamId === this.props.screamId
       )
     )
       return true;
     else return false;
   };
   likeScream = () => {
-    this.props.likeScream(this.props.scream.screamId);
+    this.props.likeScream(this.props.screamId);
   };
   unlikeScream = () => {
-    this.props.unlikeScream(this.props.scream.screamId);
+    this.props.unlikeScream(this.props.screamId);
   };
   render() {
+    const { authenticated } = this.props.user;
     const likeButton = !authenticated ? (
-      <MyButton tip="Like">
-        <Link to="/login">
+      <Link to="/login">
+        <MyButton tip="Like">
           <FavoriteBorder color="primary" />
-        </Link>
-      </MyButton>
+        </MyButton>
+      </Link>
     ) : this.likedScream() ? (
       <MyButton tip="Unlike" onClick={this.unlikeScream}>
         <FavoriteIcon color="primary" />
@@ -42,7 +43,7 @@ export class LikeButton extends Component {
         <FavoriteBorder color="primary" />
       </MyButton>
     );
-    return LikeButton;
+    return likeButton;
   }
 }
 
