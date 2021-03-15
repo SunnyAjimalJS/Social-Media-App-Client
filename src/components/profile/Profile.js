@@ -6,13 +6,13 @@ import dayjs from "dayjs";
 import EditDetails from "./EditDetails";
 // Redux imports
 import { connect } from "react-redux";
-import { logoutUser, uploadImage } from "../redux/actions/userActions";
+import { logoutUser, uploadImage } from "../../redux/actions/userActions";
 // Material UI Imports
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import MuiLink from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
-import MyButton from "../util/MyButton";
+import MyButton from "../../util/MyButton";
 // Icons imports
 import LocationOn from "@material-ui/icons/LocationOn";
 import LinkIcon from "@material-ui/icons/Link";
