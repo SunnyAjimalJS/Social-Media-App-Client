@@ -1,12 +1,18 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
-
+import { Link } from "react-router-dom";
+import dayjs from "dayjs";
 // Material UI imports
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
-const styles = {};
+const styles = {
+  invisibleSeparator: {
+    border: "none",
+    margin: 4,
+  },
+};
 
 class Comments extends Component {
   render() {
@@ -26,7 +32,20 @@ class Comments extends Component {
                   />
                 </Grid>
                 <Grid item sm={9}>
-                  <div className={classes.commentData}></div>
+                  <div className={classes.commentData}>
+                    <Typography
+                      variant="h5"
+                      component={Link}
+                      to={`/users/${userHandle}`}
+                      color="primary"
+                    >
+                      {userHandle}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary">
+                      {dayjs(createdAt).format("h:mm a, MMMM DD YYYY")}
+                    </Typography>
+                    <hr className={classes.invisibleSeparator} />
+                  </div>
                 </Grid>
               </Grid>
             </Grid>
