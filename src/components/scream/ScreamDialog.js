@@ -2,10 +2,11 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 import MyButton from "../../util/MyButton";
-import dayjs from "dayjs";
-import { Link } from "react-router-dom";
 import LikeButton from "./LikeButton";
 import Comments from "./Comments";
+import CommentForm from "./CommentForm";
+import dayjs from "dayjs";
+import { Link } from "react-router-dom";
 // Material UI imports
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -113,10 +114,10 @@ class ScreamDialog extends Component {
           <span>{commentCount}</span>
         </Grid>
         <hr className={classes.visibleSeparator} />
+        <CommentForm screamId={screamId} />
         <Comments comments={comments} />
       </Grid>
     );
-
     return (
       <Fragment>
         <MyButton

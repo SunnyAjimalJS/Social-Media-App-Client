@@ -10,6 +10,7 @@ import {
   POST_SCREAM,
   SET_SCREAM,
   STOP_LOADING_UI,
+  SUBMIT_COMMENT,
 } from "../types";
 import axios from "axios";
 
@@ -81,6 +82,7 @@ export const likeScream = (screamId) => (dispatch) => {
     })
     .catch((err) => console.log(err));
 };
+
 // Unlike a scream
 export const unlikeScream = (screamId) => (dispatch) => {
   axios
@@ -92,6 +94,11 @@ export const unlikeScream = (screamId) => (dispatch) => {
       });
     })
     .catch((err) => console.log(err));
+};
+
+// Submit a comment
+export const submitComment = (screamId, commentData) => (dispatch) => {
+  axios.post(`/scream/${screamId}/comment`);
 };
 
 // Delete a scream
