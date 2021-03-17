@@ -64,7 +64,7 @@ export default function (state = initialState, action) {
         ...state,
         scream: {
           ...state.scream,
-          comments: [action.payload, ...state.screams.comments],
+          comments: [action.payload, ...state.scream.comments],
         },
       };
     default:
