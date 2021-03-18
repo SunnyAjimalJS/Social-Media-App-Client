@@ -131,7 +131,17 @@ export const deleteScream = (screamId) => (dispatch) => {
 // Get user data for when someone clicks on a user handle to go that profile page
 export const getUserData = (userHandle) => (dispatch) => {
   dispatch({ type: LOADING_DATA });
-  axios.get(`/user/${userHandle}`).then((res) => {});
+  axios.get(`/user/${userHandle}`).then((res) => {
+    dispatch({
+      type: SET_SCREAMS,
+      payload: res.data.screams,
+    }).catch(() => {
+      dispatch({
+        type: SET_SCREAMS,
+        payload: null,
+      });
+    });
+  });
 };
 
 // Clear any errors in state
