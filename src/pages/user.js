@@ -42,7 +42,11 @@ class User extends Component {
           {screamsMarkup}
         </Grid>
         <Grid item sm={4} xs={12}>
-          <StaticProfile profile={this.state.profile} />
+          {this.state.profile === null ? (
+            <p>Loading profile..</p>
+          ) : (
+            <StaticProfile profile={this.state.profile} />
+          )}
         </Grid>
       </Grid>
     );
