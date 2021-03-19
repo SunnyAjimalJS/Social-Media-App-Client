@@ -22,6 +22,14 @@ class Notifications extends Component() {
   state = {
     anchorEl: null,
   };
+  render() {
+    const notifications = this.props.notifications;
+    const anchorEl = this.state.anchorEl;
+
+    let notificationIcon;
+    if (notifications && notifications.length > 0) {
+    }
+  }
 }
 
 Notifications.propTypes = {
